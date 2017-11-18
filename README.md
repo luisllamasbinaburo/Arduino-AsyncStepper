@@ -8,7 +8,7 @@ La clase AsyncStepper implementa un motor paso a paso cuyos movimientos están t
 
 La clase AsyncStepper no realiza el control del motor paso a paso, únicamente realiza la temporaización de los pasos. Esto permite que sea muy versatil, ya que es independiente del motor paso a paso o controlador empleado.
 
-Para conseguir controlar el servo, debemos proporcionar las funciones de CallBack `actionCW' y `actionCCW` que contangan, respectivamente, el código necesario para avanzar un paso en sentido horario y anti horario. 
+Para conseguir controlar el motor paso a paso, debemos proporcionar las funciones de CallBack `actionCW' y `actionCCW` que contangan, respectivamente, el código necesario para avanzar un paso en sentido horario y anti horario. 
 
 La clase AsyncStepper está especialmente pensada para funcionar de forma conjunta con controladores como el A4988 o el DRV8825. Este tipo de controladores avanzan un paso al recibir un pulso.
 
