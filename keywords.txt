@@ -1,0 +1,30 @@
+#######################################
+# Syntax Coloring Map AsyncStepper
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+AsyncStepper	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+Rotate	KEYWORD2
+RotateToAngle	KEYWORD2
+RotateContinuos	KEYWORD2
+SetSpeedRpm	KEYWORD2
+SetSpeedDegreesBySecond	KEYWORD2
+SetSpeedRadiansBySecong	KEYWORD2
+SetMetersBySecond	KEYWORD2
+Stop	KEYWORD2
+GetCurrentAngle	KEYWORD2
+Update	KEYWORD2
+ActionCW	KEYWORD2
+ActionCCW	KEYWORD2
+PinCW	KEYWORD2
+PinCCW	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
