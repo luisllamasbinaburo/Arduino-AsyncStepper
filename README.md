@@ -42,11 +42,11 @@ void RotateToAngle(float angle, StepDirection direction);
 void RotateContinuos(StepDirection direction);
 
 // Cambiar velocidad y aceleración
-void SetSpeed(long speed)
-void SetSpeedRpm(float rpm)
-void SetSpeedDegreesBySecond(float degreesBySecond)
-void SetAcceleration(long acceleration)
-void SetAcceleration(long acceleration, long deceleration)
+void SetSpeed(long speed);
+void SetSpeedRpm(float rpm);
+void SetSpeedDegreesBySecond(float degreesBySecond);
+void SetAcceleration(long acceleration);
+void SetAcceleration(long acceleration, long deceleration);
 
 // Detener el motor paso a paso
 void Stop();
@@ -56,18 +56,18 @@ void Stop();
 bool Update();
 
 //Obtener información
-long GetRemainSteps() const
-unsigned long GetTimeTraveling() const
-float GetCurrentAngle() const
-long GetCurrentInterval() const
-long GetTravelCurrentStep() const
-long GetTravelSteps() const
-long GetAbsoluteStep() const
-long GetMaxSpeed() const
-long GetCurrentSpeed() const
-float GetCurrentSpeedRpm() const
-float GetCurrentSpeedDegreesBySecond() const
-float GetSpeedForMove(long steps, float time)
-float GetTimeForMove(long steps)
-float GetTimeForMove(long steps, unsigned long speed)
+long GetRemainSteps();
+unsigned long GetTimeTraveling();
+float GetCurrentAngle();
+long GetCurrentInterval();
+long GetTravelCurrentStep();
+long GetTravelSteps();
+long GetAbsoluteStep();
+long GetMaxSpeed();
+long GetCurrentSpeed();
+float GetCurrentSpeedRpm();
+float GetCurrentSpeedDegreesBySecond();
+float GetSpeedForMove(long steps, float time);
+float GetTimeForMove(long steps);
+float GetTimeForMove(long steps, unsigned long speed);
 ```
