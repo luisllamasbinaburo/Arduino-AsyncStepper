@@ -71,3 +71,7 @@ float GetSpeedForMove(long steps, float time);
 float GetTimeForMove(long steps);
 float GetTimeForMove(long steps, unsigned long speed);
 ```
+
+## Referencias
+Cálculos para aceleración y deceleración lineal del motor paso a paso basado en el artículo "Linear speed control of stepper motor" de Atmel
+[http://ww1.microchip.com/downloads/en/appnotes/doc8017.pdf](http://ww1.microchip.com/downloads/en/appnotes/doc8017.pdf)
