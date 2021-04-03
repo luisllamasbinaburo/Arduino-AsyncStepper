@@ -1,5 +1,5 @@
 # Librería Arduino AsyncStepper v2.0
-Librería para Arduino que permite mover un motor paso a paso de forma no bloqueante. De esta forma se tiene un motor paso a paso que tiene un cierto comportamiento "asíncrono".
+Librería para Arduino que permite mover un motor paso a paso de forma no bloqueante, con aceleración y deceleración lineal. De esta forma se tiene un motor paso a paso que tiene un cierto comportamiento "asíncrono".
 
 Más información https://www.luisllamas.es/libreria-arduino-asyncstepper/
 
