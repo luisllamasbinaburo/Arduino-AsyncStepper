@@ -35,15 +35,18 @@ void RotateToAngle(float angle, StepDirection direction, StepCallback callback);
 void RotateToAngle(float angle, StepDirection direction);
  
  // Mover en un cierto tiempo en segundos
- void RotateAngleInTime(float angle, float time, StepperDirection direction, StepperCallback onFinish = nullptr)
- void RotateToAngleInTime(float angle, float time, StepperDirection direction, StepperCallback onFinish = nullptr)
+ void RotateAngleInTime(float angle, float time, StepperDirection direction, StepperCallback onFinish = nullptr);
+ void RotateToAngleInTime(float angle, float time, StepperDirection direction, StepperCallback onFinish = nullptr);
  
  // Mover de forma continua
 void RotateContinuos(StepDirection direction);
 
-// Cambiar velocidad del motor paso a paso
-void SetSpeedRpm(float rpm);
-void SetSpeedDegreesBySecond(float degreesBySecond);
+// Cambiar velocidad y aceleración
+void SetSpeed(long speed)
+void SetSpeedRpm(float rpm)
+void SetSpeedDegreesBySecond(float degreesBySecond)
+void SetAcceleration(long acceleration)
+void SetAcceleration(long acceleration, long deceleration)
 
 // Detener el motor paso a paso
 void Stop();
@@ -52,6 +55,19 @@ void Stop();
 // Es necesario llamar a este metodo frecuentemente desde el bucle principal
 bool Update();
 
-//Obtener el angulo actual
-float GetCurrentAngle() const;
+//Obtener información
+long GetRemainSteps() const
+unsigned long GetTimeTraveling() const
+float GetCurrentAngle() const
+long GetCurrentInterval() const
+long GetTravelCurrentStep() const
+long GetTravelSteps() const
+long GetAbsoluteStep() const
+long GetMaxSpeed() const
+long GetCurrentSpeed() const
+float GetCurrentSpeedRpm() const
+float GetCurrentSpeedDegreesBySecond() const
+float GetSpeedForMove(long steps, float time)
+float GetTimeForMove(long steps)
+float GetTimeForMove(long steps, unsigned long speed)
 ```
