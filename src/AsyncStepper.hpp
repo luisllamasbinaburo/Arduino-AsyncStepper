@@ -59,8 +59,8 @@ public:
 		PinStep = pinStep;
 		OnFinish = nullptr;
 
-		pinMode(OUTPUT, PinDir);
-		pinMode(OUTPUT, PinStep);
+		pinMode(PinDir, OUTPUT);
+		pinMode(PinStep, OUTPUT);
 	}
 
 
@@ -92,7 +92,7 @@ public:
 	void RotateInTime(long steps, float time, StepperDirection direction, StepperCallback onFinish = nullptr)
 	{
 		auto requiredTime = GetTimeForMove(steps);
-		
+
 		auto speed = requiredTime > time ? MaxSpeed : GetSpeedForMove(steps, time);
 
 		Direction = direction;
@@ -129,6 +129,15 @@ public:
 		InitRotation(MaxSpeed);
 	}
 
+	void Stop()
+	{
+		State = StepperState::Stopped;
+	}
+
+	void Break()
+	{
+		State = StepperState::Breaking;
+	}
 
 
 	uint16_t Update()
@@ -146,7 +155,6 @@ public:
 		}
 		return stepsDone;
 	}
-
 
 	void SetSpeed(long speed)
 	{
@@ -330,8 +338,8 @@ private:
 	unsigned long TravelStartTime;
 	unsigned long LastStepTime;
 
-	unsigned long PulseOnWidth = 1;
-	unsigned long PulseOffWidth = 100;
+	unsigned long PulseOnWidth = 10;
+	unsigned long PulseOffWidth = 250;
 
 	void InitRotation(unsigned long speed)
 	{
@@ -363,36 +371,30 @@ private:
 		if (State == StepperState::Stopped) return;
 
 		const auto remaining = GetRemainSteps();
-
-		if (Mode == StepperMode::Linear)
+		if (ContinuousMove == false && remaining <= 0)
 		{
-			if (State != StepperState::Breaking)
-				DecSteps = GetRampSteps(GetCurrentSpeed(), Deceleration);
-
-			if (ContinuousMove == false && remaining <= 0)
-			{
-				State = StepperState::Stopped;
-				if (OnFinish != nullptr) OnFinish();
-			}
-			else if (ContinuousMove == false && remaining <= DecSteps)
-			{
-				State = StepperState::Breaking;
-			}
-			else if (TravelCurrentStep <= AccSteps)
-			{
-				State = StepperState::Accelerating;
-			}
-			else
-			{
-				State = StepperState::Running;
-			}
+			State = StepperState::Stopped;
+			if (OnFinish != nullptr) OnFinish();
 		}
 		else
 		{
-			if (ContinuousMove == false && remaining <= 0)
+			if (Mode == StepperMode::Linear)
 			{
-				State = StepperState::Stopped;
-				if (OnFinish != nullptr) OnFinish();
+				if (State == StepperState::Breaking) return;
+
+				DecSteps = GetRampSteps(GetCurrentSpeed(), Deceleration);
+				if (ContinuousMove == false && remaining <= DecSteps)
+				{
+					State = StepperState::Breaking;
+				}
+				else if (TravelCurrentStep <= AccSteps)
+				{
+					State = StepperState::Accelerating;
+				}
+				else
+				{
+					State = StepperState::Running;
+				}
 			}
 		}
 	}
@@ -445,7 +447,7 @@ private:
 		if (ActionCCW != nullptr) ActionCCW();
 		else
 		{
-			digitalWrite(PinDir, HIGH);
+			digitalWrite(PinDir, LOW);
 			DigitalPulse(PinStep);
 		}
 
