@@ -13,6 +13,8 @@ You should have received a copy of the GNU Affero General Public License along w
 #ifndef _ASYNCSTEPPER_h
 #define _ASYNCSTEPPER_h
 
+#define _ASYNCSTEPPER_VERSION_ 2.1
+
 #include <Arduino.h>
 
 typedef void(*StepperCallback)();
@@ -117,7 +119,6 @@ public:
 		RotateAngleInTime(angleDelta, time, direction, OnFinish);
 	}
 
-
 	void RotateContinuous(StepperDirection direction)
 	{
 		Direction = direction;
@@ -136,6 +137,10 @@ public:
 
 	void Break()
 	{
+		DecSteps = GetRampSteps(GetCurrentSpeed(), Deceleration);
+		TravelSteps = DecSteps;
+		ContinuousMove = false;
+		TravelCurrentStep = 1;
 		State = StepperState::Breaking;
 	}
 
