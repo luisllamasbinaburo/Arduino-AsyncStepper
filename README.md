@@ -1,4 +1,4 @@
-# Librería Arduino AsyncStepper v2.0
+# Librería Arduino AsyncStepper v2.1
 Librería para Arduino que permite mover un motor paso a paso de forma no bloqueante, con aceleración y deceleración lineal. De esta forma se tiene un motor paso a paso que tiene un cierto comportamiento "asíncrono".
 
 Más información https://www.luisllamas.es/libreria-arduino-asyncstepper/
@@ -48,7 +48,10 @@ void SetSpeedDegreesBySecond(float degreesBySecond);
 void SetAcceleration(long acceleration);
 void SetAcceleration(long acceleration, long deceleration);
 
-// Detener el motor paso a paso
+// Inicion manual del frenado del motor paso a paso
+void Break();
+
+// Detener manualmente el motor paso a paso
 void Stop();
 
 // Actualiza la posicion del motor paso a paso
