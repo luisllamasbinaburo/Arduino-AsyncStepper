@@ -12,7 +12,7 @@ AsyncStepper	KEYWORD1
 #######################################
 Rotate	KEYWORD2
 RotateToAngle	KEYWORD2
-RotateContinuos	KEYWORD2
+RotateContinuous	KEYWORD2
 SetSpeedRpm	KEYWORD2
 SetSpeedDegreesBySecond	KEYWORD2
 SetSpeedRadiansBySecong	KEYWORD2
