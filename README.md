@@ -39,7 +39,7 @@ void RotateToAngle(float angle, StepDirection direction);
  void RotateToAngleInTime(float angle, float time, StepperDirection direction, StepperCallback onFinish = nullptr);
  
  // Mover de forma continua
-void RotateContinuos(StepDirection direction);
+void RotateContinuous(StepDirection direction);
 
 // Cambiar velocidad y aceleración
 void SetSpeed(long speed);
