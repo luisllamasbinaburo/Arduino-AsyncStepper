@@ -220,6 +220,10 @@ public:
 		return TravelSteps;
 	}
 
+	void ResetAbsoluteStep() {
+		AbsoluteStep = 0;
+	}
+	
 	long GetAbsoluteStep() const
 	{
 		return AbsoluteStep;
